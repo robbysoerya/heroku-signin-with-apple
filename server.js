@@ -22,7 +22,7 @@ app.get("/", (request, response) => {
 // The callback route used for Android, which will send the callback parameters from Apple into the Android app.
 // This is done using a deeplink, which will cause the Chrome Custom Tab to be dismissed and providing the parameters from Apple back to the app.
 app.post("/callbacks/sign_in_with_apple", (request, response) => {
-  const redirect = `intent://callback?${new URLSearchParams(
+  const redirect = `skinmystery://skinmystery.com?${new URLSearchParams(
     request.body
   ).toString()}#Intent;package=${
     process.env.ANDROID_PACKAGE_IDENTIFIER
@@ -47,7 +47,7 @@ app.post("/sign_in_with_apple", async (request, response) => {
           : process.env.SERVICE_ID,
       team_id: process.env.TEAM_ID,
       redirect_uri:
-        "https://flutter-sign-in-with-apple-example.glitch.me/callbacks/sign_in_with_apple", // does not matter here, as this is already the callback that verifies the token after the redirection
+        "https://skinmystery.com.heroku.app/callbacks/sign_in_with_apple", // does not matter here, as this is already the callback that verifies the token after the redirection
       key_id: process.env.KEY_ID
     },
     process.env.KEY_CONTENTS.replace(/\|/g, "\n"),
